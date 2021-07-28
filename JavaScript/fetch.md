@@ -52,6 +52,7 @@ Response对象标头信息属性
 | response.json()        | JSON 对象                 |
 | response.blob()        | 二进制 Blob 对象          |
 | response.arrayBuffer() | 二进制 ArrayBuffer 对象。 |
+
 注意：读取方法都是`异步`的， 返回的都是`Promise对象`，stream对象`只能读取一次`，可以用 `Response.clone()`创建副本
 `Response.body`返回一个`ReadaleStream对象`，可以用来分块读取内容（可用在显示下载进度）
 
