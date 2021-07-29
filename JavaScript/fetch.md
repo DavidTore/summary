@@ -41,7 +41,7 @@ Response对象标头信息属性
 - basic：普通请求，即同源请求。
 - cors：跨域请求。
 - error：网络错误，主要用于 Service Worker。
-- opaque：如果fetch()请求的mode属性设为no-cors，就会返回这个值，详见请求部分。表示发出的是简单的跨域请求，类似<form>表单的那种跨域请求。
+- opaque：如果fetch()请求的mode属性设为no-cors，就会返回这个值，详见请求部分。表示发出的是简单的跨域请求，类似\<form\>表单的那种跨域请求。
 - opaqueredirect：如果fetch()请求的redirect属性设为manual，就会返回这个值，详见请求部分。
 
 >fetch()发出请求以后，只有网络错误，或者无法连接时，fetch()才会报错，其他情况都不会报错，而是认为请求成功。Promise 不会变为 rejected状态。
