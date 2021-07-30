@@ -7,3 +7,4 @@ let subName = 'name';
 let obj = { [subName] : 'David' } 
 ```
 
+## 函数柯里化
