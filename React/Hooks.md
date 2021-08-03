@@ -26,7 +26,7 @@ const Example = () => {
 
 用法：**useEffect( callback: Function [, propertyArray: Array] )**
 
-> 可以把 `useEffect` Hook 看做 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个函数的组合。可以按照代码用途分离effects，React 将按照 effects 声明的顺序依次调用组件中的*每一个* effect。
+> 可以把 `useEffect` Hook 看做 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个函数的组合。可以按照代码用途分离effects，React 将按照 effects 声明的顺序依次调用组件中的*每一个*effect。
 
 ```jsx
 /* useEffect 第一个参数effect函数，此函数在执行 DOM 更新（包括第一次渲染之后和每次更新 即mount/update）之后会被调用；*/
@@ -73,3 +73,6 @@ useEffect第二个参数注意点
 | 空数组       | 仅在 mount/unMount 执行；effect不依赖于props或state中任何值，所以永远不需要重复执行 |
 | 一个值的数组 | 该值有*变化*就执行                                                                  |
 | 多个值的数组 | 有一个值有*变化*就执行                                                              |
+
+- useEffect中发起[网络请求例1](https://blog.csdn.net/wayne214/article/details/108799557)
+- useEffect中发起[网络请求例2](https://blog.csdn.net/qq_29438877/article/details/100015581)
