@@ -29,8 +29,8 @@ class Component extends React.Component{
 - 挂载过程(实例化)
   
 ```jsx
-// 数据初始化
-constructor()
+// 数据初始化，需要写super
+constructor(props, context)
 
 // 组件已完成初始化数据，但是未渲染DOM时执行，主要用于服务端渲染
 componentWillMount()
