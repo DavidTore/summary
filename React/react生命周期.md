@@ -1,8 +1,11 @@
 # 生命周期
 
+## React 16.4及之后生命周期
 
+- getDerivedStateFromProps(nextProps, prevState)
+代替componentWillReceiveProps()
 
-
+![ReactLifeCycle16.4.png](https://i.loli.net/2021/08/18/G48I67Zcu1noiW2.png)
 
 ## 旧版生命周期
 
