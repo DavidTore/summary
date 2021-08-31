@@ -2,7 +2,7 @@
 
 ## 基本用法(Async)
 
-- async作为`关键字`用在`函数`前面，表示不阻塞后面代码执行
+- `async`作为`关键字`用在`函数`前面，表示不阻塞后面代码执行
 
 ```js
 async function Foo(item){
@@ -24,7 +24,7 @@ const Foo = async(item) => {
 }
 ```
 
-- async函数返回一个`promise`对象，可以用`then`方法获取返回值
+- `async`函数返回一个`promise`对象，可以用`then`方法获取返回值
   
 ```js
 async function timeout() {
@@ -35,7 +35,7 @@ timeout().then(result => {
 })
 ```
 
-- async函数若有返回值，则调用时会调用`Promise.resolve()`转换为`Promise`对象；若抛出错误，会调用`Promise.reject()`，可以用`catch`捕获
+- `async`函数若有返回值，则调用时会调用`Promise.resolve()`转换为`Promise`对象；若抛出错误，会调用`Promise.reject()`，可以用`catch`捕获
 
 ```js
 async function timeout(flag) {
@@ -97,6 +97,7 @@ function doIt() {
 
 doIt();
 ```
+
 ```js
 // async/await处理
 async function doIt() {
