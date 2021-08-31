@@ -20,10 +20,9 @@
 > 5.`Generator`
 > 6.ES7的`async/await`
 
-
 ## 基本用法
 
-- `Promise`有三种状态: `pending`, `resolved`, `rejected`；
+- `Promise`有三种状态: `pending`, `fulfilled`, `rejected`；
   
 > 1.初始化，状态：pending
 > 2.当调用resolve(成功)，状态：pengding=>fulfilled
@@ -32,7 +31,6 @@
 - Promise的结构
 
 ```js
-
 class Promise{
   constructor(exector) {
   function resolve(){}
@@ -43,7 +41,7 @@ class Promise{
 }
 ```
 
-- `Promise`对象常用`then`方法用来执行回调函数，`then`方法包含成功的`resolved`回调，失败的`rejected`回调（可选）
+- `Promise`对象常用`then`方法用来执行回调函数，`then`方法包含成功的`resolved`回调，失败的`rejected`回调
   
 ```js
     let prom = (time) => {
@@ -55,6 +53,18 @@ class Promise{
 ```
 
 ## API
+
+- `Promise()` 构造器主要用于包装不支持`Promise`（返回值不是`Promise`）的函数
+  
+```js
+new Promise((resolve, reject) => {
+  // 调用异步操作，并最终调用以下两种函数之一：
+  //
+  resolve(someValue)        // fulfilled
+  // 或者
+  reject("failure reason")  // rejected
+});
+```
 
 - `Promise.resolve()` 将现有对象转为`Promise`对象,状态为`resolved`;
   
@@ -77,15 +87,22 @@ class Promise{
 
 - `Promise.reject()` 返回一个`Promise`对象,状态为`rejected`；
 
-- `Promise.prototype.then()` 最多需要两个参数，包含成功的`resolved`回调，失败的`rejected`回调，
+- `Promise.prototype.then()` 最多需要两个参数，包含成功的`resolved`回调，失败的`rejected`回调，其返回一个`promise`对象；
 
 ```js
+// then里的参数是可选的，catch(failureCallback)是then(null, failureCallback)的缩略形式
 
 ```
 
-- `Promise.prototype.catch()` 发生错误的回调函数。
+- `Promise.prototype.catch()` 发生错误的回调函数，返回一个`promise`对象。
 
 - `Promise.all()` 适合用于所有的结果都完成了才去执行`then()`成功的操作
+
+## 约定
+
+- 在本轮`事件循环`运行完成之前，回调函数是不会被调用的。
+- 即使异步操作已经完成（成功`resolved`或失败`rejected`），在这之后通过`then()`添加的回调函数也会被调用。
+- 通过多次调用`then()`可以添加多个回调函数，它们会按照插入顺序进行执行。
   
 ## Promise优缺点
 
