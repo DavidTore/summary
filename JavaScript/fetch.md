@@ -4,7 +4,7 @@
 
 - 使用Promise
 - 采用模块化设计，包括Response/Request/Headers
-- 通过数据流对象（stream）处理数据，分块读取，减少内存占用，而+XMLHttpRequest不支持数据流
+- 通过数据流对象（stream）处理数据，分块读取，减少内存占用，而XMLHttpRequest不支持数据流
   
     `fetch(url[, optionObj])`
 
