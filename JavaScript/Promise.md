@@ -10,7 +10,7 @@
 > 2.异步操作顺序变更时，需要大规模的代码重构；
 > 3.回调函数基本都是匿名函数，bug追踪困难。
 
-### [解决异步问题](https://www.cnblogs.com/zuobaiquan01/p/8477322.html)
+### [解决异步问题](https://blog.csdn.net/howgod/article/details/93978297)
 
 > JavaScript是单线程执行代码，导致JavaScript的很多操作都是异步执行的，以下是解决异步的几种方式:
 > 1.回调函数(定时器)
