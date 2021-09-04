@@ -224,6 +224,67 @@ then(onFulfilled,onRejected){
 }
    //promise的决议结果只有两种可能：完成和拒绝，附带一个可选的单个值。如果Promise完成，那么最终的值称为完成值；如果拒绝，那么最终的值称为原因。Promise只能被决议（完成或拒绝）一次。之后再次试图完成或拒绝的动作都会被忽略。
 }
+// promise.all实现
+Promise.prototype.all = function(promises) {
+  let results = [];
+  let promiseCount = 0;
+  let promisesLength = promises.length;
+  return new Promise(function(resolve, reject) {
+    for (let promise of promises) {
+      promise.then( (res) => {
+        promiseCount++;
+        // results.push(res);
+        results[i] = res;
+        // 当所有函数都正确执行了，resolve输出所有返回结果。
+        if (promiseCount === promisesLength) {
+          return resolve(results);
+        }
+      },  (err) => {
+        return reject(err);
+      });
+    }
+  });
+};
+
+// Promise.race实现
+function race(iterable) {
+  return new Promise((resolve, reject) => {
+    for (const promise of iterable) {
+      promise.then(
+        (value) => {
+          if (settlementOccurred) return;
+          settlementOccurred = true;
+          resolve(value);
+        },
+        (err) => {
+          if (settlementOccurred) return;
+          settlementOccurred = true;
+          reject(err);
+        });
+    }
+    let settlementOccurred = false;
+  });
+}
+
+// Promise.allSettled实现
+Promise.allSettled = function (promises) {
+    return new Promise(resolve => {
+      const data = [], len = promises.length;
+      let count = len;
+      for (let i = 0; i < len; i += 1) {
+        const promise = promises[i];
+        promise.then(res => {
+          data[i] = { status: 'fulfilled', value: res };
+        }, error => {
+          data[i] = { status: 'rejected', reason: error };
+        }).finally(() => { // promise has been settled
+          if (!--count) {
+            resolve(data);
+          }
+        });
+      }
+    });
+  }
 ​
 new Promise((resolve,reject)=>{
    resolve("success")；

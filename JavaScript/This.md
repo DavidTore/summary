@@ -52,6 +52,21 @@
       foo(...args){console.log(this.name, ...args)}};
     let obj2 = {name: 'obj2'};
     obj1.foo.call(obj2, 'args1','args2')  // obj2, args1, args2
+
+
+    //手写 call 函数
+    Function.prototype.myCall = function(context, ...args){
+      // 获取第一个参数上下文环境
+      context = (context == undefined || context == null) ? window : context;
+      // 将被调用的函数保存至第一个参数内
+      context._fn = this;
+      // 在第一个参数上下文环境内执行被调用的函数
+      let res = context._fn(...args);
+      // 删除第一个参数里的函数
+      delete context._fn;
+      return res;
+    }
+
     ```
 
   - `Function.prototype.apply(thisArg, [argsArray])`调用函数
@@ -62,6 +77,16 @@
       foo(args){console.log(this.name, ...args)}};
     let obj2 = {name: 'obj2'};
     obj1.foo.call(obj2, ['args1','args2'])  // obj2, args1, args2
+
+    // 手写 apply 函数
+    Function.prototype.myApply = function(context,args){
+      context = (context == null || context == undefined) ? window : context;
+      context._fn = this;
+      // 只有调用时传参需要更改
+      let res = context._fn(...args);
+      delete context._fn;
+      return res;
+    }
     ```
 
   - `Function.prototype.bind(thisArg[, arg1[, arg2[, ...]]])` 创建函数
@@ -73,6 +98,7 @@
     let obj2 = {name: 'obj2'};
     obj1.foo.bind(obj2, ['args1','args2'])()  // obj2, args1, args2
     obj1.foo.bind(obj2, 'args1','args2')()  // foo(...args){console.log(...args)}
+    
     ```
 
 - `new`绑定
