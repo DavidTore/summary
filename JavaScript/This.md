@@ -76,7 +76,7 @@
       name: 'obj1',
       foo(args){console.log(this.name, ...args)}};
     let obj2 = {name: 'obj2'};
-    obj1.foo.call(obj2, ['args1','args2'])  // obj2, args1, args2
+    obj1.foo.apply(obj2, ['args1','args2'])  // obj2, args1, args2
 
     // 手写 apply 函数
     Function.prototype.myApply = function(context,args){

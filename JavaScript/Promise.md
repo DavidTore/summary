@@ -215,7 +215,7 @@ then(onFulfilled,onRejected){
            onFulfilled(self.value);//成功值
       }
        if(self.status === REJECTED){
-           onFulfilled(self.reason);//拒绝原因
+           onRejected(self.reason);//拒绝原因
       }
        if(self.status === PENDING){
            self.onResolveCallBacks.push(onFulfilled);//订阅发布
@@ -237,10 +237,10 @@ Promise.prototype.all = function(promises) {
         results[i] = res;
         // 当所有函数都正确执行了，resolve输出所有返回结果。
         if (promiseCount === promisesLength) {
-          return resolve(results);
+           resolve(results);
         }
       },  (err) => {
-        return reject(err);
+         reject(err);
       });
     }
   });

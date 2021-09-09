@@ -1,6 +1,18 @@
 
 # JS常用概念
 
+## ES6新特性
+
+1. 块级作用域、块级变量`let`、块级常量`const`
+1. 箭头函数
+1. 参数处理（默认参数/...）
+1. 模板字面量(模板字符串)
+1. 对象的扩展
+1. 解构赋值（[a,b] = [x,y]）
+1. 模块（`import`/`export`）
+1. 类（`class`/`extends`）
+1. `Promise`
+
 ## JavaScript 数据类型和数据结构
 
 - 6 种`原始类型`，使用`typeof`运算符检查：
@@ -150,8 +162,8 @@ Object.assaign({},obj)
   if(xmlHttpRequest.readyState == 4){ // 判断异步调用是否成功,若成功开始局部更新数据
   console.log('状态码为', xmlHttpRequest.status);
   if(xmlHttpRequest.status == 200) {
-    console.log('异步调用返回的数据为：', xmlHttpRequest .responseText);
-    document.getElementById("myDiv").innerHTML = xmlHttpRequest .responseText; // 局部刷新数据到页面
+    console.log('异步调用返回的数据为：', xmlHttpRequest.responseText);
+    document.getElementById("myDiv").innerHTML = xmlHttpRequest.responseText; // 局部刷新数据到页面
     } else { // 如果异步调用未成功,弹出警告框,并显示错误状态码
     alert("error:HTTP状态码为:"+xmlHttpRequest.status);
     }
@@ -203,17 +215,17 @@ Object.assaign({},obj)
 
 ## 盒模型
 
-标准盒模型 content(width) padding border margin
-IE盒模型  content padding border (三者合为width) margin
-box-sizing: content-box 是W3C盒子模型
-box-sizing: border-box 是IE盒子模型
-block模型的元素默认占据一行，允许通过css设置宽度、高度。
-inline类型的元素的宽度与高度取决于它的内容的高度与宽度，在页面宽度允许的情况下，默认一行放多个元素直至放不下
+- 标准盒模型 `content`(width) `padding border margin`
+- IE盒模型  `content padding border` (三者合为width) `margin`
+`box-sizing: content-box` 是W3C盒子模型
+`box-sizing: border-box` 是IE盒子模型
+`block`模型的元素默认占据一行，允许通过css设置宽度、高度。
+`inline`类型的元素的宽度与高度取决于它的内容的高度与宽度，在页面宽度允许的情况下，默认一行放多个元素直至放不下
 
 ## 回流和重绘
 
 回流（布局改变）： render tree中一部分因为元素规模尺寸/布局/隐藏等改变而重新构建，每个页面至少一次回流，即第一次加载时；
-重绘（元素更新属性）：render tree元素更新属性，不影响布局，则为重绘，如background-color；
+重绘（元素更新属性）：render tree元素更新属性，不影响布局，则为重绘，如`background-color`；
 
 ## 事件冒泡和事件捕获
 
@@ -240,9 +252,9 @@ inline类型的元素的宽度与高度取决于它的内容的高度与宽度�
   第三个参数是boolean类型，默认是false，表示在事件冒泡的阶段调用事件处理函数,传入true，就表示在事件捕获的阶段调用事件处理函数。
 
 - 阻止事件冒泡
-  ①e.stopPropagation()
+  `event.stopPropagation()` 或者 `return false`
 
   ```js
   div3.onclick = function (e) {e.stopPropagation();};
+  div3.onclick = function (e) {return false};
   ```
-  
