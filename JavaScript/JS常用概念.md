@@ -258,3 +258,27 @@ Object.assaign({},obj)
   div3.onclick = function (e) {e.stopPropagation();};
   div3.onclick = function (e) {return false};
   ```
+
+## import require
+
+- require是运行时调用，require是赋值过程，所以require理论上可以运用在代码的任何地方
+- import是编译时调用，import是解构过程，所以必须放在文件开头，且前面不允许有其他逻辑代码
+  
+```js
+// 错误演示
+export 1;
+var a = 100;
+export a;
+
+// export在导出接口的时候，必须与模块内部的变量具有一一对应的关系
+export {a}
+
+export default function(){};
+// equals to 
+function a(){};
+export {a as default};
+
+import a from './d';
+//equals to 
+import {default as a}
+```
